@@ -1,0 +1,32 @@
+.album-covers {
+     position: relative; /*Sets album cover to relative position*/
+}
+ 
+.collection-album-container {
+     position: relative; /* Again sets relative position */
+     margin-top: 30px;
+     margin-bottom: 20px;
+     text-align: center;
+}
+ 
+.collection-album-container .caption {
+     margin-top: 10px; /* Adds some space via top margin between album covers and our caption */
+}
+ 
+.collection-album-container .caption p {
+     font-size: 1rem;
+     font-weight: 300;
+     color: rgba(255, 255, 255, 0.6);
+}
+ 
+.collection-album-container .caption p a {
+     color: rgba(255, 255, 255, 0.6);
+}
+ 
+.collection-album-container .caption p a.album-name {
+     color: white;
+}
+ 
+.collection-album-container img {
+     width: 80%;
+}

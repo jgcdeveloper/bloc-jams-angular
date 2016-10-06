@@ -1,0 +1,137 @@
+/* A CSS ruleset is how we change elements by giving them properties.
+We so this using an selector followed by a declaration block, 
+so for the first usage in this sheet, height IS the selector : { 100% } IS the declaration block.
+Note the declaration block is always in {}, and multiple elements can be modified in the declaration block. */
+
+/* Universal selectors such as * can be used to select all elements on the page and applys a style to them. They tend not to work well on large webpages, so it is best to limit their use. In this example we are using them to make sure all boxes are by default rendered as border boxes if that is not already specified or unless overridden by more specific selectors. 
+
+::before and ::after are psuedo-elements that are used to change a specific part of the element. The ::before and ::after for example could normally add some formatting before the selected element content and the ::after would be able to add something after the content from the element has been placed. 
+
+However, it is important to note that the universal selector cannot select these psuedo elements. That is why, in this code, we need to do *::before and *::after to make sure these psuedo elements are also selected and put into a border box.
+
+:: colon is used in CSS3 to help distinguish between psuedo elements and psuedo classes */
+
+
+*, *::before, *::after {
+    /* Border boxs are different then content boxes. In a border box, the dimentions of the box if set with height and width properties will include the content, padding & border in the calculation. A content box only uses the content in this calculation, and the pardding, border, and margin are not included and any size for them will increase dimension of the box. Note that this element needs to use vendor tags for both webkit and for mozilla */
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* This will modify all elements in the HTML document. */
+html {
+    height: 100%; /* Sets height of our HTML element to 100% of the window */
+    font-size: 100%; 
+}
+
+body {
+    background-image: url(../assets/images/blurred_backgrounds/blur_bg_3.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+    font-family: 'Open Sans';  /*This font was linked to using the link in the index page */
+    color: white; /* Font color will be white */
+    min-height: 100%; /* Sets body height to 100% of the window */
+    padding-bottom: 200px;
+}
+
+.navbar {
+    /* rem stands for Root em. It is a relative unit for calculating size of an element. em is defined by the width of 'm' in a particlar font. The root em is based on the font size of the root element, in this case the HTML parent. Rem is useful for element sizing  */
+    position: relative;
+    padding: 0.5rem;
+    background-color: rgba(101,18,95,0.5); /* The last alpha channel specifies opacity */
+    z-index: 1; /*Used for creating stack order. When overlapping, higher z-index items will be in front of those with a lower stack order */
+}
+
+.navbar .logo {
+/* This is a dependant selector. This will apply changes to the .logo classes which are within a .navbar class. It is important to seperate them with a space */
+    position: relative;
+    left: 2rem;
+    cursor: pointer; /* This will change our cursor to a hand pointer icon when it is over the element*/
+}
+
+ .navbar .links-container {
+     /* This will be the element box used to contain the links */
+     display: table; /* will display as a table style element */
+     position: absolute; /* take an absolute position within the parent (nav) element */
+     top: 0; /* will position with an offset of zero from the top of the .navbar coordinates */
+     right: 0; /* will position with an offset of zero from the right of the .navbar coordinates */
+     height: 100px; /* links container will have a height of 100 px */
+     color: white; /* text color for this element will be white */
+     text-decoration: none; /*changes how the text is displayed by default. Normally href is underlined, so ths will remove the underline from the href links */
+ }
+ 
+ .links-container .navbar-link {
+     /* This will change the actual link element */
+     display: table-cell; /* This will act as a cell for the parent <div class link container> */
+     position: relative; /* This element box will take a relative positon */
+     height: 100%; /* This link will maintain a height of 100% of it's parent element */
+     padding-left: 1rem;
+     padding-right: 1rem;
+     vertical-align: middle; /* Adds a vertical alignment for the middle of the containing element */
+     color: white; /*Again gives a value for the text color*/
+     font-size: 0.625rem; /*reduces the font size for the collation link */
+     letter-spacing: 0.05rem; /*reduces the letter spacing for this element */
+     font-weight: 700; /*specifies a greater font weight then default element */
+     text-transform: uppercase; /*makes sure the link names are always uppercase */
+     text-decoration: none; /*again makes sure that the href is not underlined */
+     cursor: pointer; /*again trasnforms our cursor into a finger */
+ }
+
+.links-container .navbar-link:hover {
+/*calls the hover psuedo class, which allows for the element to change when mouse is hovering over the element*/ 
+    color: rgb(233,50,117); /*changes element color when hovering*/
+ }
+
+/*Media selector for medium screens (min 640px)*/
+
+.container {
+    margin: 0 auto; /* Recall syntax, 0 is top/bottom and auto is left/right margin */
+    max-width: 64rem;
+}
+
+.container.narrow {
+/* Remeber that no space means any element that has the same two classes, where as if it were a space it would indicate looking for a child element */  
+    max-width: 56rem;
+}
+
+@media (min-width: 640px) {
+/*This media selection will increase the font size in our HTML element. It will apply when the rule specified in brackets is set to true (boolean). It is dynamic (note if you move the window it will see the effect). Normal cascading rules apply, so a selector should always be placed under the element it is changing... or use a stronger specificity. Another note is that when changing font size in the HTML element you cannot use a relative unit because there is no parent to relate to. Note that in most browsers the default size for REM is usually 16 pixels. Finally, while we do not use it here, it is possible to use boolean logic operators to apply a condition only when a set of conditions are met. Logical and and , (here , represents or) */    
+    html { font-size: 112%; }
+    
+    /* Responsive web development uses a grid system to set divisions on a page based on common proportions. Bootstrap and Foundation use popular grid systems, but we will design our own here. Grids change in layout based on device breakpoints (which we defined with the @media selector. Here we are adding the column class */
+    .column {
+        float: left; /* Float tells element to float along the left or right side of its container, where text and other inline elements can wrap around it. */
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    /*These define our column widths for our new columns */
+    .column.full { width: 100%; }
+    .column.two-thirds { width: 66.7%; }
+    .column.half { width: 50%; }
+    .column.third { width: 33.3%; }
+    .column.fourth { width: 25%; }
+    .column.flow-opposite { float: right; } 
+
+}
+
+/*Media selector for large screens (min 1024px)*/
+@media (min-width: 1024px) {
+    html { font-size: 120%;} 
+}
+
+/* This will apply a clearfix to make sure elements following the float elements to make sure elements do not get pushed up into the element containing floated elements. It basically works by using ::after to add a single space as a table after any content in the class. It then pushes that element down and clears the float on both sides, so we can be assured that the next element will not flow up into the floats before it */
+
+*/
+.clearfix::before, 
+.clearfix::after {
+    content: " ";
+    display: table;
+}
+
+.clearfix::after {
+    clear: both;
+}
