@@ -3,12 +3,18 @@
     <head lang="en">
         
         <meta charset="UTF-8">
-        <title>Bloc Jams Angular</title> <!-- The title of our new project -->
-        <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Sets the width metadata to current device width. Inital scale of 1 (no default zoom) -->
+        
+        <!-- The title of our new project -->
+        <title>Bloc Jams Angular</title>
+        
+        <!-- Sets the width metadata to current device width. Inital scale of 1 (no default zoom) -->
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
     
-        <!-- Sylesheet Links -->
+        <!-- Sylesheet Links to external sources (Fonts and Icons) -->
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,800,600,700,300">
         <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        
+        <!-- Sylesheet Links for this website -->
         <link rel="stylesheet" type="text/css" href="/styles/normalize.css">
         <link rel="stylesheet" type="text/css" href="/styles/main.css">
         <link rel="stylesheet" type="text/css" href="/styles/landing.css">
@@ -18,6 +24,7 @@
      </head>
 
     <body>
+        
         <!-- This will contain the navigation bar -->
         <nav class="navbar">
             
@@ -34,9 +41,19 @@
             </div>
         
         </nav>
+        
+        <!-- Call to the UI View external angular module -->
+        <ui-view></ui-view>
          
-         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script> <!--Include the Angular Framework Library (in this case the minified version-->
-         <script src="/scripts/app.js"></script>
-     </body>
+        <!--Include the Angular Framework Library (in this case the minified version-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script> 
+        
+        <!--Include the UI Router Angular Module. Since it is dependant on Angular, it must come after it-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+        
+        <!--Include the app file for Angular-->
+        <script src="/scripts/app.js"></script>
+        
+    </body>
 
 </html>

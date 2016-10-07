@@ -47,7 +47,7 @@ body.landing {
     padding: 2rem; /* This adds padding around the box to give some space for the text. */
     text-align: center; /* This will text align center */
     
-    opacity: 0; /*Opacity zero makes the point element transparent*/
+    opacity: 1; /*Opacity zero makes the point element transparent*/
     
     /*These three fuctions do the same thing,but use vendor tags to support more browser versions */
     -webkit-transform: scaleX(0.8) translateY(5rem); /*scaleX - scale 90% along the X (horz) axis */
