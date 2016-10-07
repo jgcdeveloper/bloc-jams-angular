@@ -1,17 +1,21 @@
 //Opinionated style guide recommends wrapping in a function to avoid pollution of global namespace
 (function () { 
 
-    function config ($stateProvider,$locationProvider) {
+    function config($stateProvider,$locationProvider) {
         $locationProvider
             .html5Mode({
-                enabled: true;
-                requireBase: false;
+                enabled: true,
+                requireBase: false
         });
     
     $stateProvider
         .state('landing', {
             url: '/',
             templateURL: '/templates/landing.html'
+    })
+        .state('collection', {
+            url: '/collection/',
+            templateURL: '/templates/collection.html'
     })
         .state('album', {
             url: '/album/',
@@ -21,6 +25,6 @@
     }
 //'blocJams' is the name of the module, [] is for dependancy injection.
     angular
-        .module('blocJams', ['ui.router']);
+        .module('blocJams', ['ui.router'])
         .config(config);
 })();
