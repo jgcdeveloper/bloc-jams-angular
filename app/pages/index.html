@@ -12,8 +12,10 @@
     
         <!-- Sylesheet Links to external sources (Fonts and Icons) -->
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,800,600,700,300">
+        
         <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
         
+
         <!-- Sylesheet Links for this website -->
         <link rel="stylesheet" type="text/css" href="/styles/normalize.css">
         <link rel="stylesheet" type="text/css" href="/styles/main.css">
@@ -43,11 +45,15 @@
         
         <ui-view></ui-view>
          
-        <!--Include the Angular Framework Library (in this case the minified version-->
+        <!--Include the Angular Framework Library (in this case the minified version
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script> 
-        
-        <!--Include the UI Router Angular Module. Since it is dependant on Angular, it must come after it-->
+        -->
+        <script src="/scripts/libraries/angular.min.js"></script>
+
+        <!--Include the UI Router Angular Module. Since it is dependant on Angular, it must come after it
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+        -->        
+        <script src="/scripts/libraries/angular-ui-router.min.js"></script>
         
         <!--Include the app file for Angular-->
         <script src="/scripts/app.js"></script>

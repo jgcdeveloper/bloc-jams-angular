@@ -50,9 +50,9 @@ body.landing {
     opacity: 1; /*Opacity zero makes the point element transparent*/
     
     
-    /* These three fuctions do the same thing,but use vendor tags to support more browser versions */
-    -webkit-transform: scaleX(0.8) translateY(5rem); /*scaleX - scale 90% along the X (horz) axis */
-    -moz-transform: scaleX(0.8) translateY(5rem); /* translateY - move 3rem down  Y (vert) axis */
+    /*  Refactored out in our switch to Angular. Kept in for learning purposes
+    -webkit-transform: scaleX(0.8) translateY(5rem); /*scaleX - scale 90% along the X (horz) axis 
+    -moz-transform: scaleX(0.8) translateY(5rem); /* translateY - move 3rem down  Y (vert) axis 
     transform: scaleX(0.8) translateY(5rem);
     
     /* Refactored out in our switch to Angular. Kept in for learning purposes
