@@ -1,7 +1,7 @@
 //Opinionated style guide recommends wrapping in a function to avoid pollution of global namespace
 (function () { 
 
-    function config($stateProvider,$locationProvider) {
+    function config($stateProvider, $locationProvider) {
         $locationProvider
             .html5Mode({
                 enabled: true,
@@ -11,15 +11,15 @@
     $stateProvider
         .state('landing', {
             url: '/',
-            templateURL: '/templates/landing.html'
+            templateUrl: '/templates/landing.html'
     })
         .state('collection', {
             url: '/collection/',
-            templateURL: '/templates/collection.html'
+            templateUrl: '/templates/collection.html'
     })
         .state('album', {
             url: '/album/',
-            templateURL: '/templates/album.html'
+            templateUrl: '/templates/album.html'
     });
     
     }
