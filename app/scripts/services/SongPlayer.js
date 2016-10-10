@@ -2,63 +2,86 @@
     function SongPlayer() {
                
         /**
-        * @desc SongPlayer constructor
+        * @desc SongPlayer constructor. Return for access to environment
         * @type {Object}
         */
         var SongPlayer = {},
             
         /**
-        * @desc currentSong selected
+        * @desc currentSong selected is stored here
         * @type {Object}
         */
-        currentSong = null,
+        _currentSong = null,
             
         /**
-        * @desc Buzz object audio file
+        * @desc Buzz object audio file for use with the buzzMusic API
         * @type {Object}
         */
-        currentBuzzObject = null;
+        _currentBuzzObject = null;
         
         /*
-        * @function setSong
+        * @function setSong (private)
         * @desc Stops currently playing song and loads new audio file as currentBuzzObject
         * @param {Object} song
         */
-        var setSong = function(song){
+        var _setSong = function(song){
             
-            if (currentBuzzObject) {
-                currentBuzzObject.stop();
-                currentSong.playing = null;
+            if (_currentBuzzObject) {
+                _currentBuzzObject.stop();
+                _currentSong.playing = null;
             }
  
-            currentBuzzObject = new buzz.sound(song.audioUrl, {
+            _currentBuzzObject = new buzz.sound(song.audioUrl, {
                 formats: ['mp3'],
                 preload: true
             });
  
-            currentSong = song;
+            _currentSong = song;
                 
         };
         
+        /*
+        * @function playSong (private)
+        * @desc Starts song playing and updates song key of playing to value of true
+        * @param {Object} song
+        */
+        var _playSong = function(song){
+            _currentBuzzObject.play(song);
+            song.playing = true;
+        }
+        
+        /*
+        * @method .play (public)
+        * @desc Starts our _currentBuzzObject to play
+        * @param {Object} song
+        */        
         SongPlayer.play = function(song){
             
-            if (currentSong !== song) {    
-                setSong(song);
-                currentBuzzObject.play();
-                song.playing = true;
+            if (_currentSong !== song) {    
+                _setSong(song);
+                _playSong(song);
+                
+                //currentBuzzObject.play();
+                //song.playing = true;
             
             } else if(currentSong === song) {
             
-                if (currentBuzzObject.isPaused()) {
-                    currentBuzzObject.play();
+                if (_currentBuzzObject.isPaused()) {
+                    _playSong(song);
+                    //currentBuzzObject.play();
                     
                 }
             }              
                 
         };
     
+        /*
+        * @method .pause (public)
+        * @desc Pauses our _currentBuzzObject which is playing
+        * @param {Object} song
+        */  
         SongPlayer.pause = function (song){
-            currentBuzzObject.pause();
+            _currentBuzzObject.pause();
             song.playing = false;
         }
         
