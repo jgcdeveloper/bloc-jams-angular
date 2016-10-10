@@ -37,7 +37,6 @@
             });
  
             _currentSong = song;
-                
         };
         
         /*
