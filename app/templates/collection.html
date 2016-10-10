@@ -1,5 +1,6 @@
 <section class="album-covers container clearfix">
-    <div class="collection-album-container column fourth" ng-repeat="album in collection.albums">
+    <!-- Note because ng-repeat by default does not allow repeat values, we need to track by $index to allow us to use this technique to track repeat by $index rather then by value -->
+    <div class="collection-album-container column fourth" ng-repeat="album in collection.albums track by $index">
         <img src="{{ album.albumArtUrl }}">
         <div class="collection-album-info caption">
             <p>
