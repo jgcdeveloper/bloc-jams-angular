@@ -52,6 +52,17 @@
         };
         
         /*
+        * @function _stopSong (private)
+        * @desc Stops song and sets song.playing to null
+        * @param {Object} song
+        */
+        var _stopSong = function(song){
+            _currentBuzzObject.stop();
+            song.playing = null;
+        };
+        
+        
+        /*
         * @function _getSongIndex (private)
         * @desc Starts song playing and updates song key of playing to value of true
         * @param {Object} song
@@ -67,6 +78,13 @@
         * @type {Object}
         */
         SongPlayer.currentSong = null;
+        
+        /**
+        * @desc currentArtist is stored here in public object SongPlayer.
+        * @type "string"
+        */
+        SongPlayer.currentArtist = _currentAlbum.artist;
+        
         
         /*
         * @method .play (public)
@@ -87,7 +105,7 @@
                     _playSong(song);
                    
                 }
-            }              
+            }          
         };
     
         /*
@@ -99,12 +117,12 @@
             
             song = song || SongPlayer.currentSong;
             _currentBuzzObject.pause();
-            song.playing = false;
+            song.playing = null;
         }
         
         /*
         * @method .previous (public)
-        * @desc Decrements our song index by 1
+        * @desc Decrements our song index by 1. Sets the new song to play. Checks for end.
         * @param {Object} song
         */  
         SongPlayer.previous = function() {
@@ -112,8 +130,29 @@
             currentSongIndex--;
         
             if(currentSongIndex < 0) {
-                _currentBuzzObject.stop();
-                SongPlayer.currentSong.playing = null;
+                var song = _currentAlbum.songs[currentSongIndex+1];
+                _stopSong(song);
+                
+            } else {
+                var song = _currentAlbum.songs[currentSongIndex];
+                _setSong(song);
+                _playSong(song);
+            }
+        
+        };
+
+                /*
+        * @method .previous (public)
+        * @desc Increments our song index by 1. Sets the new song to play. Checks for end.
+        * @param {Object} song
+        */  
+        SongPlayer.next = function() {
+            var currentSongIndex = _getSongIndex(SongPlayer.currentSong);
+            currentSongIndex++;
+        
+            if(currentSongIndex >= _currentAlbum.songs.length) {
+                var song = _currentAlbum.songs[currentSongIndex-1];
+                _stopSong(song);
             } else {
                 var song = _currentAlbum.songs[currentSongIndex];
                 _setSong(song);
