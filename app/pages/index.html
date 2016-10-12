@@ -44,7 +44,10 @@
         </nav>
         
         <ui-view></ui-view>
-         
+        
+         <!--Include the Minified jQuery libary. We use this for seekBar functionality. Note if we use both jQuery and Angular, jQuery must be called first for angular.element to work correctly-->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        
         <!--Include the Angular Framework Library (in this case the minified version
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script> 
         -->
@@ -66,6 +69,7 @@
         <script src="/scripts/controllers/CollectionCtrl.js"></script>
         <script src="/scripts/controllers/AlbumCtrl.js"></script>
         <script src="/scripts/controllers/PlayerBarCtrl.js"></script>
+        <script src="/scripts/directives/seekBar.js"></script>
         
     </body>
 
