@@ -32,15 +32,11 @@
                 var seekBar = $(element);
                 
                 attributes.$observe('value', function(newValue) {
-                    //console.log("A Value Change!" + newValue);
                     scope.value = newValue;
-                    //console.log("scope.value is" + scope.value);
                 });
  
                 attributes.$observe('max', function(newValue) {
-                    //console.log("A Max Change!" + newValue);
                     scope.max = newValue;
-                    //console.log("scope.max is" + scope.max);
                 });
                             
                 var percentString = function () {

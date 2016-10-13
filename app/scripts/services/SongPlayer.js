@@ -92,6 +92,12 @@
         */
         SongPlayer.currentTime = null;
         
+        /**
+        * @desc current value of volume. Default at 50.
+        * @type {Number}
+        */
+        SongPlayer.volume = 50;
+        
         
         /**
         * @desc currentArtist is stored here in public object SongPlayer.
@@ -183,6 +189,17 @@
         SongPlayer.setCurrentTime = function(time) {
             if (_currentBuzzObject) {
                 _currentBuzzObject.setTime(time);
+            }
+        };
+        
+        /**
+        * @function setVoumume
+        * @desc Set current time (in seconds) of currently playing song
+        * @param {Number} time
+        */
+        SongPlayer.setVolume = function(volume) {
+            if (_currentBuzzObject) {
+                _currentBuzzObject.setVolume(volume);
             }
         };
         
