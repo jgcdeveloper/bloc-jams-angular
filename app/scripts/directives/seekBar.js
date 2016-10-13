@@ -1,7 +1,12 @@
 (function() {
     function seekBar($document) {
-    
-         var calculatePercent = function(seekBar, event) {
+        
+        /*
+        * @function calculatePercent 
+        * @desc Calculates the percent from seekBar based on location where the bar was clicked (pageX)
+        * @param {Object} seekBar, {object} event 
+        */
+        var calculatePercent = function(seekBar, event) {
             var offsetX = event.pageX - seekBar.offset().left;
             var seekBarWidth = seekBar.width();
             var offsetXPercent = offsetX / seekBarWidth;
