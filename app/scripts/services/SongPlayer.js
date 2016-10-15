@@ -201,8 +201,7 @@
                 _currentBuzzObject.setVolume(volume);
             }
         };
-        
-        
+                
     return SongPlayer;
     
     }
