@@ -44,7 +44,6 @@
                 });
             });
             
-            
             SongPlayer.currentSong = song;
         };
                
